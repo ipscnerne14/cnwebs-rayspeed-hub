@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷速 · 持续陪伴的浏览起点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #fafbfc;
+            font-family: system-ui, -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: #1f2a3e;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+        /* hero */
+        .hero {
+            padding: 80px 0 48px;
+            text-align: center;
+            border-bottom: 1px solid #e9ecf0;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 520;
+            letter-spacing: -0.02em;
+            color: #0b1a2e;
+            margin-bottom: 16px;
+        }
+        .hero h1 span {
+            display: inline-block;
+            background: #eef2f7;
+            padding: 0 8px;
+            border-radius: 4px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #4a5870;
+            max-width: 520px;
+            margin: 0 auto 24px;
+        }
+        .hero .bookmark-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            border: 1px solid #dae0e8;
+            border-radius: 40px;
+            padding: 10px 24px;
+            font-size: 0.95rem;
+            color: #2c3b54;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .hero .bookmark-badge svg { width: 20px; height: 20px; fill: none; stroke: #3f5a83; stroke-width: 2; }
+
+        /* section common */
+        .section {
+            padding: 56px 0;
+            border-bottom: 1px solid #edf0f5;
+        }
+        .section:last-of-type { border-bottom: none; }
+        .section-header {
+            margin-bottom: 28px;
+        }
+        .section-header h2 {
+            font-size: 1.7rem;
+            font-weight: 480;
+            letter-spacing: -0.01em;
+            color: #132034;
+            margin-bottom: 6px;
+        }
+        .section-header .sub {
+            color: #68748e;
+            font-size: 0.95rem;
+        }
+
+        /* 优势卡片 */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .advantage-card {
+            background: #ffffff;
+            padding: 24px 20px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef1f6;
+            transition: box-shadow 0.2s;
+        }
+        .advantage-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+        .advantage-card .num {
+            display: inline-block;
+            font-size: 1.4rem;
+            font-weight: 380;
+            color: #43608a;
+            margin-bottom: 8px;
+            background: #eef4fb;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .advantage-card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #1e2d46;
+        }
+        .advantage-card p {
+            font-size: 0.95rem;
+            color: #536076;
+        }
+
+        /* 说明区 */
+        .explain-text {
+            background: #ffffff;
+            padding: 32px 32px 28px;
+            border-radius: 20px;
+            border: 1px solid #e9edf4;
+            margin-bottom: 16px;
+        }
+        .explain-text p {
+            margin-bottom: 16px;
+        }
+        .explain-text p:last-child { margin-bottom: 0; }
+        .explain-text .highlight {
+            background: #f2f6fc;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #1f3c64;
+        }
+        .inline-link {
+            color: #2b5280;
+            text-decoration: none;
+            border-bottom: 1px solid #c6d4e6;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .inline-link:hover {
+            border-bottom-color: #2b5280;
+            color: #1a3a60;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid #eef1f6;
+            border-radius: 14px;
+            padding: 20px 24px;
+        }
+        .faq-item dt {
+            font-weight: 520;
+            font-size: 1.05rem;
+            color: #182b46;
+            margin-bottom: 6px;
+        }
+        .faq-item dd {
+            color: #536076;
+            font-size: 0.95rem;
+            margin-left: 0;
+        }
+
+        /* 底部 */
+        .site-footer {
+            margin-top: auto;
+            padding: 32px 0 40px;
+            border-top: 1px solid #e9ecf0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #68748e;
+        }
+        .site-footer a {
+            color: #2b5280;
+            text-decoration: none;
+            border-bottom: 1px solid #d3deec;
+        }
+        .site-footer a:hover {
+            border-bottom-color: #2b5280;
+        }
+        .footer-meta {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero { padding: 56px 0 32px; }
+            .hero h1 { font-size: 2rem; }
+            .advantages-grid { grid-template-columns: 1fr; gap: 16px; }
+            .section { padding: 40px 0; }
+            .explain-text { padding: 24px 20px; }
+            .faq-item { padding: 16px 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- hero 区：再次访问与收藏 -->
+    <header class="hero">
+        <h1>再回来，<span>雷速</span> 还在这里</h1>
+        <p>你收藏的不仅是一个链接，更是一种浏览节奏。</p>
+        <div class="bookmark-badge">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+            已收藏 · 常回来看看
+        </div>
+    </header>
+
+    <!-- 优势区：为什么值得持续关注 -->
+    <section class="section">
+        <div class="section-header">
+            <h2>习惯成自然</h2>
+            <div class="sub">一些让人愿意反复回来的细节</div>
+        </div>
+        <div class="advantages-grid">
+            <div class="advantage-card">
+                <div class="num">1</div>
+                <h3>页面安静，不打扰</h3>
+                <p>没有弹窗、没有横幅，专注你正在寻找的信息。</p>
+            </div>
+            <div class="advantage-card">
+                <div class="num">2</div>
+                <h3>结构始终如一</h3>
+                <p>每次打开都熟悉，文章、导航、分类的位置不会突然改变。</p>
+            </div>
+            <div class="advantage-card">
+                <div class="num">3</div>
+                <h3>加载稳，不拖沓</h3>
+                <p>图片适量，字体即时渲染，不用等待空白的页面发呆。</p>
+            </div>
+            <div class="advantage-card">
+                <div class="num">4</div>
+                <h3>内容补全及时</h3>
+                <p>隔段时间回来，会发现新的主题和资料整理，但旧内容也都在。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说明区：从重新发现到持续使用 -->
+    <section class="section">
+        <div class="section-header">
+            <h2>并非偶然再次打开</h2>
+            <div class="sub">一次收藏，后续很多次自然的回访</div>
+        </div>
+        <div class="explain-text">
+            <p>
+                不少朋友会把 <a href="https://cnwebs-rayspeed.com" class="inline-link">雷速</a> 放在浏览器的书签栏里，
+                或是记在笔记软件的某个角落。隔一两周再点开，发现首页还是那个熟悉的布局，但资讯已经更新。
+                不需要重新适应，也没有突然的改版惊吓。
+            </p>
+            <p>
+                这种「不会变陌生」的感觉，让你更愿意把它当作一个日常获取信息的站点。
+                哪怕只是顺手扫一眼标题，或者查一个之前看过的专题，都能很快找到位置。
+            </p>
+            <p>
+                页面保持窄栏排版，行长舒服，读起来接近纸媒的节奏。
+                文字和背景的对比度经过调整，长时间观看也不会觉得刺眼。
+                当然，每个人喜好不同——你可以随时调整浏览器缩放，页面会自适应。
+            </p>
+            <p>
+                如果你之前来过，这次再回来可能会注意到一些小的调整：
+                分类标签更紧凑，文章摘要的字号稍微大了一点点。
+                但整体调性没变，还是那个你愿意收藏的 <span class="highlight">雷速</span>。
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ 摘要（落地页常见模块） -->
+    <section class="section">
+        <div class="section-header">
+            <h2>你可能想问</h2>
+            <div class="sub">来自近期访问者的常见疑问</div>
+        </div>
+        <dl class="faq-mini">
+            <div class="faq-item">
+                <dt>为什么页面这么简洁？会不会缺少内容？</dt>
+                <dd>简洁是为了让信息更容易被找到，而不是减少内容。实际上文章和资源分类一直保持更新，你可以通过顶部的导航或者标签深入浏览。</dd>
+            </div>
+            <div class="faq-item">
+                <dt>我把网站加入收藏夹很久了，安全吗？</dt>
+                <dd>你收藏的是 <a href="https://cnwebs-rayspeed.com" class="inline-link">雷速</a> 的地址，域名稳定，没有跳转到其他不明站点。日常浏览时注意自己的网络环境即可。</dd>
+            </div>
+            <div class="faq-item">
+                <dt>下次再来的时候，界面会大变样吗？</dt>
+                <dd>大的改版很少发生。即使有视觉微调，也会保持现有的布局结构和阅读习惯，不会让你感到无所适从。</dd>
+            </div>
+        </dl>
+    </section>
+
+    <!-- 底部链接 -->
+    <footer class="site-footer">
+        <div>
+            <a href="https://cnwebs-rayspeed.com">雷速</a> · 常来坐坐
+        </div>
+        <div class="footer-meta">
+            <span>收藏它，就像记住一个好位置</span>
+            <span>·</span>
+            <span>页面内容定期更新</span>
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>
